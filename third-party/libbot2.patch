@@ -1,0 +1,20 @@
+diff -rupN libbot2/bot2-vis/src/bot_vis/default_view_handler.c libbot2-fix/bot2-vis/src/bot_vis/default_view_handler.c
+--- libbot2/bot2-vis/src/bot_vis/default_view_handler.c	2015-10-23 15:15:07.873304000 +0900
++++ libbot2-fix/bot2-vis/src/bot_vis/default_view_handler.c	2015-10-23 14:56:30.177300000 +0900
+@@ -188,12 +188,13 @@ static void window_space_pan(BotDefaultV
+     double detNew = A[0]*A[3] - A[1]*A[2];
+     //printf(" %15f %15f\n", detOriginal, detNew);
+     //if (fabs(detNew) < 0.01 && fabs(detNew) <= fabs(detOriginal)) {
+-    if ((fabs(detNew) < 25 )||(fabs(detOriginal) < 25 )) { 
++    /*if ((fabs(detNew) < 25 )||(fabs(detOriginal) < 25 )) { 
+         memcpy(dvh->eye, orig_eye, 3 * sizeof(double));
+         memcpy(dvh->lookat, orig_lookat, 3 * sizeof(double));
+         look_at_changed(dvh);
+         printf("skipping pan: %15f %15f\n", detOriginal, detNew);
+-    }
++    }*/
++    // AK: for some reason this prevents eurecar from moving at all
+     
+     
+ }
+Binary files libbot2/.svn/wc.db and libbot2-fix/.svn/wc.db differ
